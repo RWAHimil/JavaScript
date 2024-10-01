@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="accountForm">
+      <input type="text" placeholder="Customer Name" id="customerName" />
+      <br /><br />
+      <input type="number" placeholder="initial Balance" id="balance" />
+      <br /><br />
+      <button>Create Account</button>
+    </form>
+
+    <hr />
+    <hr />
+
+    <form id="depositeForm">
+      <input type="number" placeholder="Account Number" id="accountNumber" />
+      <br /><br />
+      <input type="number" placeholder="Enter Amount" id="amount" />
+      <br /><br />
+      <button>Deposite</button>
+    </form>
+
+    <hr />
+    <hr />
+
+    <form id="withdrawForm">
+      <input type="number" placeholder="AccountNumber" id="accountNumber1" />
+      <br /><br />
+      <input type="number" placeholder="Withdraw Ammount" id="withdraw" />
+      <br /><br />
+      <button>Withdraw</button>
+    </form>
+  </body>
+</html>
+
+<script>
+  function BankAccount(customerName, balance = 0) {
+    this.customerName = customerName;
+    this.accountNumber = Date.now();
+    this.balance = parseInt(balance);
+
+    this.deposit = function (amount) {
+      this.balance += amount;
+    };
+
+    this.withdraw = function (amount) {
+      this.balance -= amount;
+    };
+  }
+
+  const accounts = [];
+
+  const accountForm = document.getElementById("accountForm");
+  const balance = document.getElementById("balance");
+  const customerName = document.getElementById("customerName");
+
+  accountForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const account = new BankAccount(customerName.value, balance.value);
+    accounts.push(account);
+    console.log(accounts);
+    e.target.reset();
+  });
+
+  const depositeForm = document.getElementById("depositeForm");
+  const accountNumber = document.getElementById("accountNumber");
+  const amount = document.getElementById("amount");
+
+  depositeForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const account = accounts.find(
+      (account) => account.accountNumber === +accountNumber.value
+    );
+    account.deposit(+amount.value);
+    console.log(accounts);
+    e.target.reset();
+  });
+
+  const withdrawForm = document.getElementById("withdrawForm");
+  const accountNumber1 = document.getElementById("accountNumber1");
+  const withdraw = document.getElementById("withdraw");
+
+  withdrawForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const account = accounts.find(
+      (account) => account.accountNumber === +accountNumber1.value
+    );
+    account.withdraw(+withdraw.value);
+    console.log(accounts);
+    e.target.reset();
+  });
+</script>

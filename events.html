@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function add() {
+        console.log("hhh");
+
+        document.write("World");
+      }
+
+      const clickme = () => {
+        document.write("Clicked Me");
+      };
+
+      const context = () => {
+        document.write("Contextmenu");
+      };
+
+      const mouseenter = () => {
+        document.write("Mouse Enter");
+      };
+
+      const mouseleave = () => {
+        document.write("Mouse Leave");
+      };
+
+      const mouseup = () => {
+        document.write("Mouse Up");
+      };
+
+      const mousedown = () => {
+        document.write("Mouse Down");
+      };
+
+      const mouseout = () => {
+        document.write("Mouse Out");
+      };
+
+      function displayKeyPress(event) {
+        var key = event.key;
+        alert("Key pressed: " + key);
+      }
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 onclick="add()">Hello</h1>
+
+    <button ondblclick="clickme()">Double Click Me</button>
+    <br />
+    <br />
+    <br />
+    <br />
+    <button oncontextmenu="context()">Context Menu</button>
+    <br />
+    <br />
+    <br />
+    <br />
+    <button onmouseenter="mouseenter()">Mouse Enter</button>
+    <br /><br /><br /><br />
+    <button onmouseleave="mouseleave()">Mouse Leave</button>
+    <br /><br /><br /><br />
+    <button onmouseup="mouseup()">Mouse Up</button>
+    <br /><br /><br /><br />
+    <button onmousedown="mouseup()">Mouse Down</button>
+    <br /><br /><br /><br />
+    <button onmouseout="mouseout()">Mouse Out</button>
+
+    <input type="text" id="myInput" onkeypress="displayKeyPress(event)" />
+  </body>
+</html>

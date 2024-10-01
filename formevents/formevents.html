@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input
+        type="email"
+        placeholder="Enter Email"
+        oninvalid="alert('please enter valid')"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Enter Name"
+        id="focus"
+        onfocus="focusFun(this)"
+        onblur="blurFun(this)"
+        oninput="input(this)"
+        onchange="change(this)"
+      />
+      <br /><br />
+      <input
+        type="email"
+        placeholder="Enter Email"
+        onfocus="focusFun(this)"
+        onblur="blurFun(this)"
+      />
+      <br /><br />
+      <label for="">Country : </label>
+      <select
+        name=""
+        id=""
+        onfocus="focusFun(this)"
+        onblur="blurFun(this)"
+        onchange="change(this)"
+      >
+        <option value="">---Select---</option>
+        <option value="India">India</option>
+        <option value="Canada">Canada</option>
+        <option value="USA">USA</option>
+      </select>
+      <br /><br />
+      <input type="submit" />
+    </form>
+    <div id="test"></div>
+  </body>
+</html>
+
+<script>
+  // document.getElementById("focus").addEventListener("focus", () => {
+  //   document.getElementById("focus").style.background = "lime";
+  // });
+
+  const focusFun = (ele) => {
+    ele.style.background = "red";
+  };
+
+  // let blur = document.getElementById("focus");
+  // blur.addEventListener("blur", () => {
+  //   blur.style.background = "green";
+  // });
+  const blurFun = (ele) => {
+    ele.style.background = "blue";
+  };
+
+  // const input = (ele) => {
+  //   document.getElementById("test").innerHTML = ele.value;
+  // };
+  const change = (ele) => {
+    document.getElementById("test").innerHTML = ele.value;
+  };
+</script>

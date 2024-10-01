@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .head {
+        color: red;
+      }
+
+      .head1 {
+        background: salmon;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      .para {
+        font-size: 20px;
+        color: greenyellow;
+      }
+
+      #text {
+        width: 50%;
+        height: 500px;
+        background: tan;
+      }
+
+      #demo {
+        width: 700px;
+        height: 250px;
+        background: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="head">Hello World !!!</h1>
+
+    <p id="para" class="para">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam enim
+      veniam velit, saepe eveniet molestias doloremque. Et quidem ipsam ab
+      doloremque adipisci quaerat alias, repellendus magni, dignissimos ipsa a
+      placeat aspernatur cumque in, facere aliquam saepe facilis repellat libero
+      quos doloribus explicabo veniam. Ea, impedit aliquid deleniti facere optio
+      reiciendis!
+    </p>
+
+    <div id="text">
+      <h1>Head</h1>
+      <p>This is Paragraph</p>
+      <span>Span Tag</span>
+    </div>
+
+    <div id="demo">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error saepe
+        corporis cum voluptate nostrum tenetur aperiam natus quos eligendi
+        facere amet adipisci iusto nulla cumque magni obcaecati, pariatur odio
+        ipsum totam quibusdam, assumenda architecto? Ipsum porro nesciunt
+        adipisci esse sapiente error eligendi quidem animi recusandae odio quis
+        perspiciatis quia impedit illum ad, harum nam at vitae repellat libero,
+        dolore numquam voluptate assumenda. Sit dignissimos mollitia porro
+        expedita sequi esse minima excepturi consectetur perspiciatis
+        repellendus earum cupiditate, nulla quisquam tenetur iusto eum maxime
+        qui voluptatem accusantium nesciunt. Tenetur eligendi dolores
+        voluptatibus fuga! Nam voluptas, nulla voluptatibus sequi similique sed
+        ut pariatur.
+      </p>
+    </div>
+
+    <ul id="list">
+      <li>Mango</li>
+      <li>Banana</li>
+      <li>Lichhi</li>
+      <li>Guava</li>
+      <li>Grapes</li>
+    </ul>
+
+    <div id="ff">
+      <h3>H3</h3>
+      <p>P</p>
+      <span>SPAN</span>
+    </div>
+  </body>
+</html>
+
+<script>
+  // document.querySelector("#head").className = "head head1";
+  // let aa = document.querySelector("#head").className;
+  // console.log(aa);
+
+  // document.querySelector("#head").classList = "head1 head";
+  // let bb = document.querySelector("#head").classList;
+  // console.log(bb);
+
+  // document.querySelector("#head").classList.add("head", "head1");
+  // let cc = document.querySelector("#head").classList;
+  // console.log(cc);
+
+  // document.querySelector("#head").classList.remove("head");
+  // let dd = document.querySelector("#head").classList;
+  // console.log(dd);
+
+  // const mouseenter = () => {
+  //   document.querySelector("#head").classList.add("head", "head1");
+  //   document.querySelector("#para").style.color = "blue";
+  //   document.querySelector("#para").style.backgroundColor = "grey";
+  // };
+
+  // document.querySelector("#para").addEventListener("mouseenter", mouseenter);
+
+  // document.querySelector("#para").addEventListener("mouseleave", function () {
+  //   document
+  //     .querySelector("#para")
+  //     .removeEventListener("mouseenter", mouseenter);
+  // });
+
+  const click = () => {
+    document.querySelector("#para").classList.toggle("para");
+
+    let cc = document.querySelector("#para").classList.contains("para");
+
+    console.log(cc);
+  };
+
+  document.querySelector("#para").addEventListener("click", click);
+
+  // let gg = document.querySelector("#para").classList.contains("para");
+  // console.log(gg);
+
+  // ----------------------------------------------------------------
+
+  let ele = document.createElement("p");
+  console.log(ele);
+
+  let ele1 = document.createTextNode("Hello Universe");
+  console.log(ele1);
+
+  let comment = document.createComment("This is Comment");
+  console.log(comment);
+
+  // append child
+
+  ele.appendChild(ele1);
+
+  document.querySelector("#text").appendChild(ele);
+
+  let target = document.querySelector("#text");
+
+  target.insertBefore(ele, target.children[0]);
+
+  console.log(target);
+
+  let ff = document.querySelector("#text").children;
+  console.log(ff);
+
+  // ------------------------------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------------------------
+  let newEle = document.createElement("h1");
+
+  let textNode = document.createTextNode("This is Heading");
+
+  newEle.appendChild(textNode);
+
+  console.log(newEle);
+
+  let target1 = document.querySelector("#demo");
+
+  target1.insertAdjacentElement("beforeend", newEle);
+  target1.insertAdjacentElement("afterend", newEle);
+  target1.insertAdjacentElement("beforebegin", newEle);
+  target1.insertAdjacentElement("afterbegin", newEle);
+
+  let target2 = document.querySelector("#demo");
+
+  let elee = "<h2>This is H2 Heading</h2>";
+
+  target2.insertAdjacentHTML("afterbegin", elee);
+
+  let node = "TextNode";
+
+  target2.insertAdjacentText("beforebegin", node);
+
+  // replacechild
+
+  let newElee = document.createElement("li");
+
+  let text1 = document.createTextNode("New Text");
+
+  newElee.appendChild(text1);
+
+  let target21 = document.querySelector("#list");
+
+  let oldElee = target21.children[2];
+
+  target21.replaceChild(newElee, oldElee);
+
+  // removechild
+
+  // let target41 = document.querySelector("#list");
+  // let oldii = target41.children[1];
+
+  // target41.removeChild(oldii);
+
+  let target31 = document.querySelector("#ff");
+
+  let remove = target31.children[1];
+
+  target31.replaceChild(remove);
+</script>

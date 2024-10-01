@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="Test()">Click</button>
+    <table border="2" width="70%">
+      <thead>
+        <tr>
+          <th>Sr No</th>
+          <th>Title</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody id="tabledata"></tbody>
+    </table>
+  </body>
+</html>
+
+<script>
+  const Test = async () => {
+    console.log("A");
+    console.log("B");
+
+    await fetch("https://jsonplaceholder.typicode.com/photos")
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data[0].url);
+        let tr = "";
+        for (let x in data) {
+          tr += `
+            <tr>
+              <td>${data[x].id}</td>
+              <td>${data[x].title}</td>
+              <td><img src=${data[x].url} atl=${data[x].title} /></td>
+            </tr>
+          `;
+        }
+        document.getElementById("tabledata").innerHTML = tr;
+      })
+      .catch((err) => console.log(err));
+    console.log("C");
+    console.log("D");
+  };
+</script>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // map method
+      let a = [10, 20, 30, 40, 50];
+
+      let b = a.map((i) => {
+        return i * 3;
+      });
+
+      document.write(b);
+      document.write("<br>");
+
+      let name = [
+        {
+          fname: "Raj",
+          lname: "Sathwara"
+        },
+        {
+          fname: "Himil",
+          lname: "Chauhan"
+        }
+      ];
+
+      let name1 = name.map((i) => {
+        document.write(i.fname + " " + i.lname + "<br>");
+      });
+
+      // filter
+      let ages = [5, 10, 18, 20, 3, 45, 27];
+
+      // let checkage = ages.filter((age) => {
+      //   return age >= 20;
+      // });
+
+      // document.write(checkage);
+
+      let checkage = ages.filter(age11);
+
+      function age11(age) {
+        return age >= 20;
+      }
+
+      document.write(checkage + "<br>");
+
+      // forEach
+      let c = ["Raj", "Himil", "Pushpraj", "Mayur"];
+      c.forEach(function (value, index) {
+        document.write(index + ":" + value + "<br> ");
+      });
+
+      // indexof
+
+      let aa = ["Raj", "Himil", "Pushpraj", "Mayur", "Himil"];
+
+      let bb = aa.indexOf("Himil", 2);
+      let cc = aa.indexOf("Mihir");
+
+      document.write(bb + "<br>");
+      document.write(cc + "<br>");
+
+      // lastIndexOf
+
+      let aaa = ["Raj", "Himil", "Pushpraj", "Mayur", "Himil"];
+
+      let bbb = aaa.lastIndexOf("Himil");
+
+      document.write(bbb + "<br>");
+
+      // find - returns first value
+      let aaaa = [10, 12, 15, 7, 18, 22, 25, 30];
+
+      let bbbb = aaaa.find((age) => {
+        return age > 12;
+      });
+
+      document.write(bbbb + "<br>");
+
+      // findindex
+
+      let cccc = aaaa.findIndex((age) => age > 12);
+
+      document.write(cccc + "<br>");
+
+      // includes
+      let ab = ["Raj", "Himil", "Pushpraj", "Mayur", "Himil"];
+      let ba = ab.includes("Raj");
+      let bba = ab.includes("Mihir");
+
+      document.write(ba + "<br>");
+      document.write(bba + "<br>");
+
+      // some
+
+      let bab = [10, 25, 18, 30, 55];
+      let aba = bab.some((age) => {
+        return age > 60;
+      });
+
+      document.write(aba + "<br>");
+
+      // every
+
+      let bbaa = bab.every((age) => {
+        return age > 5;
+      });
+
+      document.write(bbaa + "<br>");
+
+      // push,pop,shift,unshift,splice
+      // push
+      let arr = [10, 20, 30, 40];
+
+      arr.push(100, 111);
+
+      document.write(arr + "<br>");
+
+      // pop
+
+      arr.pop();
+
+      document.write(arr + "<br>");
+
+      // unshift
+
+      arr.shift();
+
+      document.write(arr + "<br>");
+
+      arr.unshift(1, 2, 3);
+
+      document.write(arr + "<br>");
+
+      // slice
+
+      let arrrr = ["raj", "dishant", "mayur", "mehul", "pratik", "bapu"];
+
+      let ar = arrrr.slice(2, 5);
+
+      document.write(ar + "<br>");
+
+      let ra = arrrr.slice(-3);
+
+      document.write(ra + "<br>");
+
+      // splice
+      // splice(index,how many delete,new value)
+
+      let arrra = ["raj", "dishant", "mayur", "mehul", "pratik", "bapu"];
+
+      arrra.splice(1, 0, "Himil");
+
+      document.write(arrra + "<br>");
+
+      let arara = ["raj", "dishant", "mayur", "mehul", "pratik", "bapu"];
+      arara.splice(3, 2);
+      document.write(arara);
+    </script>
+  </body>
+</html>

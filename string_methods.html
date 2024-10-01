@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // length method
+      // string
+      let a =
+        "Hello World How Are You ?? Hello Students Hello World Hello World";
+      let b = a.length;
+      document.write(b + "<br>");
+
+      // array
+      let aa = [10, 20, 30, 40, 50];
+      let bb = aa.length;
+      document.write(bb + "<br>");
+
+      // object
+      let aaa = {
+        name: "Himil",
+        age: 25,
+        address: "Ahmedabad"
+      };
+      let bbb = aaa.address.length;
+      document.write(bbb + "<br>");
+
+      // toLowercase
+      let ab = a.toLowerCase();
+      document.write(ab + "<br>");
+
+      // toUppercase
+      let ba = a.toUpperCase();
+      document.write(ba + "<br>");
+
+      // includes - returns false or true
+      let ca = a.includes("llo");
+      document.write("include " + ca + "<br>");
+
+      // startsWith
+      let ac = a.startsWith("Hello");
+      document.write("startsWith " + ac + "<br>");
+
+      // endsWith
+      let d = a.endsWith("World");
+      document.write("endsWith" + d + "<br>");
+
+      // search
+      let f = a.search("World");
+      document.write("Search " + f + "<br>");
+
+      // match
+      let e = a.match(/Hello World/g);
+      document.write("match " + e + "<br>");
+
+      // indexOf
+      let firstIndex = a.indexOf("World");
+      document.write("First index of 'World': " + firstIndex + "<br>");
+
+      // lastIndexOf
+      let lastIndex = a.lastIndexOf("World");
+      document.write("Last index of 'World': " + lastIndex + "<br>");
+
+      // replace
+      let replace = a.replace("World", "Himil");
+      document.write(replace + "<br>");
+      let replace1 = a.replace(/World/g, "Dhruvi");
+      document.write(replace1 + "<br>");
+
+      // trim
+      let gg = "       Universe    ";
+      let trim = gg.trim();
+      document.write("trim " + trim + "<br>");
+
+      // charAt
+      let charAt = a.charAt(1);
+      document.write("charAt " + charAt + "<br>");
+
+      // fromCharCode
+      let charCodeAt = a.charCodeAt(1);
+      document.write(charCodeAt + "<br>");
+
+      let ASCII = String.fromCharCode(74);
+      document.write(ASCII + "<br>");
+
+      // concat
+      let as = "Universe";
+
+      let concat = a.concat(as);
+      document.write(concat + "<br>");
+
+      // split
+      let split = a.split(" ");
+      document.write(split + "<br>");
+
+      let split1 = a.split("o");
+      document.write(split1 + "<br>");
+
+      // repeat
+      let repeat = a.repeat(3);
+      document.write(repeat + "<br>");
+
+      // slice
+      let slice = a.slice(2, 10);
+      document.write("slice " + slice + "<br>");
+
+      // // substr
+      let substr = a.substr(2, 10);
+      document.write(substr + "<br>");
+
+      // substring
+      let string11 = a.substring(2, 10);
+      document.write("string " + string11 + "<br>");
+
+      // toString
+      let ss = 50;
+      let tstring = ss.toString();
+      let sa = 20;
+      document.write(sa + tstring + "<br>");
+
+      // valueOf
+      let value = a.valueOf();
+      document.write(value + "<br>");
+    </script>
+  </body>
+</html>

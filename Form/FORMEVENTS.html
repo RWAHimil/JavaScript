@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" onsubmit="handleForm()">
+      <input
+        type="text"
+        placeholder="Enter Name"
+        id="name"
+        onfocus="focus1(this)"
+        onblur="blur1(this)"
+        oninvalid="alert('enter your name')"
+        oninput="onInput()"
+        required
+      />
+      <br /><br />
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter Email"
+        oninvalid="alert('Data Invalid')"
+        required
+        onfocus="focus1(this)"
+        onblur="blur1(this)"
+        onselect="select1()"
+        onchange="change()"
+      />
+      <br /><br />
+      <input type="submit" value="Submit" />
+      <br /><br />
+    </form>
+    <br /><br />
+    <div id="text" style="border: 2px solid black"></div>
+  </body>
+</html>
+
+<script>
+  function handleForm() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    alert(`${name} ${email}`);
+  }
+
+  function focus1(ele) {
+    ele.style.background = "red";
+    ele.style.color = "blue";
+  }
+
+  function blur1(ele) {
+    ele.style.background = "";
+  }
+
+  function onInput() {
+    let x = document.getElementById("name").value;
+    document.getElementById("text").innerHTML = x;
+  }
+
+  function select1() {
+    console.log("Selected");
+  }
+
+  function change() {
+    let x = document.getElementById("name").value;
+    document.getElementById("text").innerHTML = x;
+  }
+</script>

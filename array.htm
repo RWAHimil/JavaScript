@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array</title>
+  </head>
+  <body>
+    <script>
+      let forEach = ["Raj", "Mayank", "May"];
+      let a = [10, 20, 30, 40, 50];
+
+      let b = a.find(function (age) {
+        return age > 15;
+      });
+
+      document.write(b + "<br>");
+
+      let c = a.findIndex(function (age) {
+        return age > 15;
+      });
+
+      document.write(c);
+
+      let d = a.includes(30);
+
+      document.write(d);
+
+      let cc = a.some(function (value) {
+        return value > 20;
+      });
+
+      document.write(cc);
+
+      let dd = a.every(function (v) {
+        return v > 10;
+      });
+
+      document.write(dd + "<br>");
+
+     
+    </script>
+  </body>
+</html>

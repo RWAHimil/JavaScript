@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  const form = document.createElement("form");
+  form.id = "myForm";
+
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.id = "name";
+  nameInput.placeholder = "Enter your name";
+  form.appendChild(nameInput);
+
+  const nameError = document.createElement("p");
+  nameError.id = "nameError";
+  form.appendChild(nameError);
+
+  const emailInput = document.createElement("input");
+  emailInput.type = "email";
+  emailInput.id = "email";
+  emailInput.placeholder = "Enter your email";
+  form.appendChild(emailInput);
+
+  const emailError = document.createElement("p");
+  emailError.id = "emailError";
+  form.appendChild(emailError);
+
+  const submitButton = document.createElement("button");
+  submitButton.type = "submit";
+  submitButton.textContent = "Submit";
+  form.appendChild(submitButton);
+
+
+
+  
+  const userData = document.createElement("div");
+  userData.id = "userData";
+  // userData.innerHTML = "user";
+  form.appendChild(userData);
+
+  document.body.appendChild(form);
+  // document.body.appendChild(userData);
+
+  document
+    .getElementById("myForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+
+      let nameError = document.getElementById("nameError");
+      let emailError = document.getElementById("emailError");
+
+      let userData = document.getElementById("userData");
+
+      if (name.trim() === "") {
+        nameError.innerHTML = "Please Enter Name";
+      } else if (name.length < 3) {
+        nameError.innerHTML = "Please Enter At Least 3 Character";
+      } else {
+        nameError.innerHTML = "";
+      }
+
+      if (email === "") {
+        emailError.innerHTML = "Please Enter Email";
+      } else if (email.length < 3) {
+        emailError.innerHTML = "Please Provide a Valid E-mail Address";
+      } else {
+        emailError.innerHTML = "";
+      }
+
+      console.log(name);
+      console.log(email);
+
+      if (name && email) {
+        userData.innerHTML = `<p>Your Name : ${name}</p>
+                            <p>Your Email : ${email}</p>`;
+      }
+
+      event.target.reset();
+    });
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let student = [
+        {
+          name: "Ram",
+          age: 25
+        },
+        {
+          name: "Shyam",
+          age: 24
+        },
+        {
+          name: "Raj",
+          age: 20
+        },
+        {
+          name: "Himil",
+          age: 18
+        },
+        {
+          name: "Mayur",
+          age: 15
+        }
+      ];
+
+      for (let b = 0; b < student.length; b++) {
+        if (student[b].age > 18) {
+          document.write(student[b].name + "<br> ");
+        }
+      }
+
+      for (let a = 0; a < student.length; a++) {
+        document.write("<h2>");
+
+        document.write(
+          "My Name is " +
+            student[a].name +
+            "&  My Age is " +
+            student[a].age +
+            "<br>"
+        );
+        document.write("</h2>");
+      }
+
+      // console.log(student);
+      // document.write(student[1].age);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <form id="myForm">
+      <input type="text" placeholder="Name" id="name" />
+      <div id="nameError"></div>
+      <br /><br />
+      <input type="password" placeholder="password" id="password" />
+      <div id="passError"></div>
+      <br /><br />
+      <button>Submit</button>
+    </form>
+
+    <div id="displayData"></div>
+  </body>
+</html>
+
+<script>
+  // let form = document.createElement("form");
+  // form.id = "myForm";
+
+  // let input = document.createElement("input");
+  // input.type = "text";
+  // input.id = "name";
+  // form.appendChild(input);
+
+  // document.body.appendChild(form);
+
+  $(document).ready(function () {
+    $("#myForm").submit(function (event) {
+      event.preventDefault();
+
+      if ($("#name").val() === "") {
+        $("#nameError").text("Please enter name");
+      } else if ($("#name").val().length < 3) {
+        $("#nameError").text("Please enter more than 3 character");
+      }
+
+      if ($("#password").val() === "") {
+        $("#passError").text("Please enter password");
+      } else if ($("#password").val().length < 8) {
+        $("#passError").text("Please enter more than 8 character");
+      }
+
+      let name = $("#name").val();
+      let password = $("#password").val();
+
+      $("#displayData").text(`My Name is ${name} and Password is ${password}`);
+    });
+  });
+</script>

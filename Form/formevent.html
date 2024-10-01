@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" onsubmit="submitFunction()">
+      <label for="">Name : </label>
+      <input
+        type="text"
+        id="fname"
+        onfocus="focus1(this)"
+        onblur="blur1(this)"
+        oninput="onInput1(this)"
+        oninvalid="alert('Please Enter Valid Data')"
+        required
+      />
+      <br /><br />
+      <label for="">Class : </label>
+      <input
+        type="text"
+        onfocus="focus1(this)"
+        onblur="blur1(this)"
+        onchange="changeFunction(this)"
+        onselect="selectFunction()"
+        id="class"
+      />
+      <br /><br />
+      <label for="">Country : </label>
+      <select name="" id="select" onchange="changeFunction(this)">
+        <option value="">---Select---</option>
+        <option value="INDIA">INDIA</option>
+        <option value="USA">USA</option>
+        <option value="CANADA">CANADA</option>
+        <option value="NEPAL">NEPAL</option>
+        <option value="RUSSIA">RUSSIA</option>
+      </select>
+
+      <input type="text" placeholder="Enter" id="name" />
+
+      <br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <div id="test" style="border: 2px solid royalblue"></div>
+  </body>
+</html>
+
+<script>
+  function focus1(ele) {
+    // ele.style.color = "red";
+    ele.style.backgroundColor = "blue";
+  }
+
+  function blur1(ele) {
+    ele.style.backgroundColor = "";
+  }
+
+  document.getElementById("name").addEventListener("focus", function () {
+    document.getElementById("name").style.backgroundColor = "red";
+  });
+
+  document.getElementById("name").addEventListener("blur", function () {
+    document.getElementById("name").style.backgroundColor = "";
+  });
+
+  function onInput1(ele) {
+    let x = ele.value;
+    document.getElementById("test").innerHTML = x;
+  }
+
+  function changeFunction(ele) {
+    let x = ele.value;
+    document.getElementById("test").innerHTML = x;
+  }
+
+  function selectFunction() {
+    console.log("Selected");
+  }
+
+  function submitFunction() {
+    let name = document.getElementById("fname").value;
+    let class1 = document.getElementById("class").value;
+    let select = document.getElementById("select").value;
+    alert(
+      `Hello My Name is ${name}! and I'm Studing in ${class1} and My Favourite Country is ${select}`
+    );
+    // document.write(`Hello My Name is ${name}! and I'm Studing in ${class1} `);
+  }
+</script>

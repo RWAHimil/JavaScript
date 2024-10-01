@@ -1,0 +1,129 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"
+      integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <form id="myForm">
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Username"
+        required
+      />
+      <br />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+        required
+      />
+      <br />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+        required
+      />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
+<script>
+  $(document).ready(function () {
+    $("#myForm").validate({
+      rules: {
+        username: {
+          required: true,
+          minlength: 3
+        },
+        email: {
+          required: true,
+          email: true
+        },
+        password: {
+          required: true,
+          minlength: 6
+        }
+      },
+      messages: {
+        username: {
+          required: "Please enter your username",
+          minlength: "Username must be at least 3 characters long"
+        },
+        email: {
+          required: "Please enter your email address",
+          email: "Please enter a valid email address"
+        },
+        password: {
+          required: "Please enter your password",
+          minlength: "Password must be at least 6 characters long"
+        }
+      }
+    });
+  });
+</script> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  </head>
+  <body>
+    <form id="form">
+      <input type="text" id="name" name="name" required />
+      <br /><br />
+      <input type="password" id="password" name="password" required />
+      <br /><br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
+
+<script>
+  $(document).ready(function () {
+    $("#form").validate({
+      rules: {
+        name: {
+          required: true,
+          minlength: 3
+        },
+        password: {
+          required: true,
+          minlength: 8
+        }
+      },
+      messages: {
+        name: {
+          required: "Please Enter Name",
+          minlength: "Please Enter more than 3"
+        },
+        password: {
+          required: "please enter your password",
+          minlength: "Please enter your password"
+        }
+      }
+    });
+  });
+</script>

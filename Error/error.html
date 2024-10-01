@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  // Errors --> EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,Aggregate Error
+
+  // const age = 25;
+  try {
+    console.log(age);
+    throw new Error("Not Defined");
+  } catch (e) {
+    console.log(e);
+    console.log(e.name);
+    console.log(e.message);
+  }
+
+  const a = 2 * 4;
+  console.log(a);
+
+  // try catch
+
+  // try {
+  //   const result = prompt("Are You Robot ???");
+  //   if (result === "Y" || result === "y") {
+  //     throw new Error("Robot Found");
+  //   }
+  // } catch (err) {
+  //   console.log(err);
+  // }
+
+  // -----------
+  try {
+    console.log("Before the error");
+    // let b = 0;
+    console.log(b);
+    console.log("After the error");
+  } catch (err) {
+    console.log(err);
+  } finally {
+    console.log("Finally");
+    console.log("Last Finally");
+  }
+
+  // ----------------
+
+  try {
+    blabla;
+    for (let aa = 0; aa > 10; aa++) {
+      console.log(aa);
+    }
+  } catch (err) {
+    if (err instanceof ReferenceError) {
+      console.log("Reference Error");
+    } else if (err instanceof TypeError) {
+      console.log("TypeError");
+    } else if (err instanceof SyntaxError) {
+      console.log("SyntaxError");
+    } else {
+      console.log("Unknown Error");
+    }
+  }
+
+  // ------------------
+
+  setTimeout(() => {
+    try {
+      blabla;
+    } catch (e) {
+      console.log("Error Occured");
+
+      console.log(e);
+    }
+  }, 5000);
+
+  // -------------------
+
+  try {
+    let json = '{"age":"25"}';
+
+    let user = JSON.parse(json);
+
+    if (!user.name) {
+      throw new Error("Incomplete Data");
+    }
+
+    console.log(user.name);
+    console.log(user.age);
+  } catch (e) {
+    console.log(e);
+    console.log(e.name);
+    console.log(e.message);
+    console.log(e.stack);
+  }
+  // --------------------
+  try {
+    // Intentional Syntax Error Example
+    let x = 10;
+    if (x === 10) {
+      console.log("x is 10");
+    }
+    // Introducing Syntax Error
+    console.log("Hello World"); // Missing closing parenthesis
+  } catch (error) {
+    // if (error instanceof SyntaxError) {
+    //     console.log("Caught Syntax Error: " + error.message);
+    // } else {
+    //     console.log("Caught an error: " + error.message);
+    // }
+    console.log(error);
+  }
+</script>

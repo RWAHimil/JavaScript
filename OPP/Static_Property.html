@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // let id = 1;
+  class user {
+    static id = 1;
+
+    constructor(name, age, income) {
+      this.name = name;
+      this.age = age;
+      this.income = income;
+      this.id = user.id++;
+      // this.id = id++
+    }
+
+    static compareByAge(user1, user2) {
+      return user1.age - user2.age;
+    }
+
+    static compareByIncome(user1, user2) {
+      return user1.income - user2.income;
+    }
+  }
+
+  const user1 = new user("Raj", 25, 50000);
+  const user2 = new user("Pushpa", 22, 70000);
+  const user3 = new user("Tony", 27, 33000);
+  const user4 = new user("Captain", 2, 4300);
+  const Users = [user1, user2, user3, user4];
+  Users.sort((a, b) => (a.income - b.income));
+
+  // Users.sort(user.compareByAge);
+  // Users.sort(user.compareByIncome);
+  console.log(Users);
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #id {
+        width: 200px;
+        height: 200px;
+        background: tan;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="id"></div>
+    <button onclick="clearFun()">Button</button>
+  </body>
+</html>
+
+<script>
+  // const clearFun = () => {
+  //   clearInterval(clear);
+  // };
+  let a = 0;
+
+  const anim = () => {
+    a = a + 5;
+    console.log(a);
+
+    // console.log("Hello");
+
+    if (a == 200) {
+      clearInterval(clear);
+    } else {
+      let target = document.getElementById("id");
+      target.style.marginLeft = a + "px";
+      target.style.marginTop = a + "px";
+      target.style.transform = `rotate(${a}deg)`;
+      target.style.borderRadius = `${a}px`;
+      // target.style.border = `${a}px solid red`;
+      target.style.width = `${a}px`;
+      target.style.width = `${a}px`;
+    }
+  };
+  let clear = setInterval(anim, 100);
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="formDynamic" onclick="formSubmit()">
+      <label for="userName">UserName : </label>
+      <input type="text" id="userName" placeholder="Enter Your Name" />
+      <div id="userNameError"></div>
+
+      <br /><br />
+
+      <label for="password">Password : </label>
+      <input type="password" id="password" placeholder="Enter Your Password" />
+      <div id="passwordError"></div>
+
+      <br /><br />
+      <button type="button">Submit</button>
+    </form>
+
+    <div id="userData"></div>
+  </body>
+</html>
+
+<script>
+  document.getElementById("formDynamic").addEventListener("submit", formSubmit);
+
+  function formSubmit() {
+    const userName = document.getElementById("userName").value;
+    const password = document.getElementById("password").value;
+
+    const usernameError = document.getElementById("userNameError");
+    const passwordError = document.getElementById("passwordError");
+
+    const userData = document.getElementById("userData");
+
+    usernameError.textContent = "";
+    passwordError.textContent = "";
+
+    usernameError.style.color = "red";
+    passwordError.style.color = "red";
+
+    if (userName == "") {
+      usernameError.textContent = "Please enter a username";
+    } else if (userName.length < 3) {
+      usernameError.textContent =
+        "Please enter a username more than 3 Characters";
+    }
+
+    if (password == "") {
+      passwordError.textContent = "Please enter a password";
+    } else if (password.length < 3) {
+      passwordError.textContent =
+        "Please enter a password more than 3 Characters";
+    }
+
+    if (userName && password && userName.length >= 3 && password.length >= 3) {
+      userData.innerHTML = `<p><strong>Entered UserName :</strong>${userName}</p>
+        <p><strong>Entered Password : </strong>${password}</p>`;
+    }
+  }
+</script>

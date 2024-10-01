@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stopwatch</title>
+  </head>
+  <body>
+    <h1>Stopwatch</h1>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+    <button id="resetButton">Reset</button>
+    <p id="display">00:00:00</p>
+
+    <script>
+      let timer;
+      let seconds = 0;
+      let minutes = 0;
+      let hours = 0;
+
+      //       let str = "hello";
+      // console.log(str.padStart(10, "0")); // Output: "00000hello"
+
+      function updateDisplay() {
+        document.getElementById("display").innerText = `${hours
+          .toString()
+          .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
+          .toString()
+          .padStart(2, "0")}`;
+      }
+
+      function startTimer() {
+        timer = setInterval(function () {
+          seconds++;
+          if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+          }
+          if (minutes === 60) {
+            minutes = 0;
+            hours++;
+          }
+          updateDisplay();
+        }, 1000);
+      }
+
+      function stopTimer() {
+        clearInterval(timer);
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        seconds = 0;
+        minutes = 0;
+        hours = 0;
+        updateDisplay();
+      }
+
+      document
+        .getElementById("startButton")
+        .addEventListener("click", startTimer);
+      document
+        .getElementById("stopButton")
+        .addEventListener("click", stopTimer);
+      document
+        .getElementById("resetButton")
+        .addEventListener("click", resetTimer);
+    </script>
+  </body>
+</html>

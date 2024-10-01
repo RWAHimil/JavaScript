@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Form</title>
+    <style>
+      form {
+        width: 300px;
+        margin: 0 auto;
+        background: tan;
+        padding: 20px;
+      }
+      input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="formContainer">
+      <form id="dynamicForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter your username" />
+        <div id="usernameError" class="error"></div>
+
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+        />
+        <div id="passwordError" class="error"></div>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+      </form>
+    </div>
+    <div id="userData"></div>
+
+    <script>
+      // Validation and display data
+      function submitForm() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const usernameError = document.getElementById("usernameError");
+        const passwordError = document.getElementById("passwordError");
+        const userData = document.getElementById("userData");
+
+        usernameError.textContent = "";
+        passwordError.textContent = "";
+
+        if (username === "") {
+          usernameError.textContent = "Username is empty";
+        } else if (username.length < 3) {
+          usernameError.textContent = "Username requires minimum 3 characters";
+        }
+
+        if (password === "") {
+          passwordError.textContent = "Password should not be empty";
+        } else if (password.length < 5) {
+          passwordError.textContent =
+            "Password should be at least 5 characters";
+        }
+
+        if (
+          username &&
+          password &&
+          username.length >= 3 &&
+          password.length >= 5
+        ) {
+          userData.innerHTML = `<p><strong>Entered Username:</strong> ${username}</p>
+                            <p><strong>Entered Password:</strong> ${password}</p>`;
+        } else {
+          userData.innerHTML = "";
+        }
+      }
+    </script>
+  </body>
+</html>

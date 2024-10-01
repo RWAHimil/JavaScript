@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>StopWatch</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reset</button>
+    <p id="display">00:00:00</p>
+
+    <script>
+      let timer;
+      let seconds = 0;
+      let minutes = 0;
+      let hours = 0;
+
+      const updateDisplay = () => {
+        document.getElementById("display").innerHTML = `${hours
+          .toString()
+          .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
+          .toString()
+          .padStart(2, "0")}`;
+      };
+
+      const startTimer = () => {
+        timer = setInterval(() => {
+          seconds++;
+          if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+          }
+
+          if (minutes === 60) {
+            minutes = 0;
+            hours++;
+          }
+
+          updateDisplay();
+        }, 1000);
+      };
+
+      const stopTimer = () => {
+        clearInterval(timer);
+      };
+
+      const resetTimer = () => {
+        clearInterval(timer);
+        seconds = 0;
+        minutes = 0;
+        hours = 0;
+        updateDisplay();
+      };
+
+      document.getElementById("start").addEventListener("click", startTimer);
+      document.getElementById("stop").addEventListener("click", stopTimer);
+      document.getElementById("reset").addEventListener("click", resetTimer);
+    </script>
+  </body>
+</html>
++

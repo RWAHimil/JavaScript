@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  let obj = {
+    name: "Himil",
+    fun: function () {
+      const fun2 = () => {
+        return this.name;
+      };
+      return fun2();
+    },
+    funx: function () {
+      function fun() {
+        return this.name;
+      }
+      return fun.bind(this)();
+    }
+  };
+  console.log(obj.fun());
+  console.log(obj.funx());
+</script>

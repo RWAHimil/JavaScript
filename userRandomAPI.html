@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      .card div {
+        height: 75px;
+        width: 75px;
+        border-radius: 50%;
+        border: 1px solid brown;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .card div img {
+        border-radius: 50%;
+      }
+
+      .card {
+        height: auto;
+        min-width: 260px;
+        width: auto;
+        border: 1px solid grey;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 5px;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        background: lightgray;
+      }
+
+      .card button {
+        padding: 5px 10px;
+        color: darkorange;
+        background: lightblue;
+        border-radius: 7px;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div>
+        <img src="" alt="user-img" id="user-img" />
+      </div>
+      <p>Name : <span id="name"></span></p>
+      <p>Gender : <span id="gender"></span></p>
+      <p>Email : <span id="email"></span></p>
+      <p>DOB : <span id="dob"></span></p>
+      <p>Age : <span id="age"></span></p>
+      <p>City : <span id="city"></span></p>
+      <p>State : <span id="state"></span></p>
+      <p>Country : <span id="country"></span></p>
+      <button onclick="getData()">Next User</button>
+    </div>
+  </body>
+</html>
+<script>
+  const getData = () => {
+    fetch("https://randomuser.me/api/")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.results[0]);
+        const userImg = document.getElementById("user-img");
+        const name = document.getElementById("name");
+        const gender = document.getElementById("gender");
+        const email = document.getElementById("email");
+        const dob = document.getElementById("dob");
+        const age = document.getElementById("age");
+        const city = document.getElementById("city");
+        const state = document.getElementById("state");
+        const country = document.getElementById("country");
+
+        userImg.src = data.results[0].picture.medium;
+
+        name.innerHTML = `${data.results[0].name.title} ${data.results[0].name.first} ${data.results[0].name.last}`;
+
+        gender.innerHTML = data.results[0].gender;
+
+        email.innerHTML = data.results[0].email;
+
+        dob.innerHTML = data.results[0].dob.date;
+
+        age.innerHTML = data.results[0].dob.age;
+
+        city.innerHTML = data.results[0].location.city;
+
+        state.innerHTML = data.results[0].location.state;
+
+        country.innerHTML = data.results[0].location.country;
+      })
+      .catch((err) => console.log(err));
+  };
+</script>

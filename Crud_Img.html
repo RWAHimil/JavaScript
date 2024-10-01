@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRUD Operation with Image in Local Storage</title>
+</head>
+<body>
+  <form id="myForm">
+    <input type="text" placeholder="Enter Name" id="name" required />
+    <br /><br />
+    <input type="email" placeholder="Enter Email" id="email" required />
+    <br /><br />
+    <input type="password" placeholder="Enter Password" id="password" required />
+    <br /><br />
+    <input type="file" id="imageInput" accept="image/*" required />
+    <br /><br />
+    <input type="submit" value="Submit" />
+  </form>
+
+  <table border="1">
+    <thead>
+      <tr align="center">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="tableData"></tbody>
+  </table>
+
+  <script>
+    // Function to update the table with data from localStorage
+    const updateTable = () => {
+      const tableData = document.getElementById("tableData");
+      let html = "";
+      let data = JSON.parse(localStorage.getItem("userData")) || [];
+
+      data.forEach((item, index) => {
+        html += `
+          <tr align="center">
+            <td>${item.name}</td>
+            <td>${item.email}</td>
+            <td>${item.password}</td>
+            <td><img src="${item.image}" alt="User Image" style="max-width: 100px; max-height: 100px;" /></td>
+            <td>
+              <button onclick="editItem(${index})">Edit</button>
+              <button onclick="deleteItem(${index})">Delete</button>
+            </td>
+          </tr>
+        `;
+      });
+
+      tableData.innerHTML = html;
+    };
+
+    // Function to handle form submission
+    const submitForm = (event) => {
+      event.preventDefault();
+
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+
+      let arr = JSON.parse(localStorage.getItem("userData")) || [];
+
+      // Get the selected image file
+      let file = document.getElementById("imageInput").files[0];
+
+      let reader = new FileReader();
+      reader.onload = function(e) {
+        let imageData = e.target.result;
+
+        let obj = {
+          name: name,
+          email: email,
+          password: password,
+          image: imageData
+        };
+
+        arr.push(obj);
+
+        localStorage.setItem("userData", JSON.stringify(arr));
+        updateTable();
+        event.target.reset();
+      };
+
+      reader.readAsDataURL(file);
+    };
+`
+    document.getElementById("myForm").addEventListener("submit", submitForm);
+
+    // Function to delete an item from the table and localStorage
+    const deleteItem = (index) => {
+      let data = JSON.parse(localStorage.getItem("userData")) || [];
+      data.splice(index, 1);
+      localStorage.setItem("userData", JSON.stringify(data));
+      updateTable();
+    };
+
+    updateTable(); // Update table when the page loads
+  </script>
+</body>
+</html>

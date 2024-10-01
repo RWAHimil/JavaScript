@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .slider {
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .slides {
+        display: flex;
+        gap: 500px;
+      }
+
+      button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgb(53, 31, 31);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .prev {
+        left: 20px;
+      }
+
+      .next {
+        left: 500px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="slider">
+      <div class="slides">
+        <img
+          src="https://images.unsplash.com/photo-1659898152331-d2e32218f7bc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGpwZWd8ZW58MHwwfDB8fHww"
+          alt="image1"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1638049846933-10f57e4216ca?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBlZ3xlbnwwfDB8MHx8fDA%3D"
+          alt="image2"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1533450718592-29d45635f0a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8anBlZ3xlbnwwfDB8MHx8fDA%3D"
+          alt="image3"
+        />
+      </div>
+      <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </body>
+</html>
+<script>
+  let slideindex = 0;
+  const slides = document.querySelectorAll(".slides img");
+  const totalSlides = slides.length;
+  console.log(totalSlides);
+
+  // Initially show the first image
+  showSlide(slideindex);
+
+  function showSlide(index) {
+    slides.forEach((slide) => {
+      slide.style.display = "none";
+    });
+    slides[index].style.display = "block";
+  }
+
+  // Prev Button
+  function prevSlide() {
+    slideindex = (slideindex - 1 + totalSlides) % totalSlides;
+    showSlide(slideindex);
+  }
+
+  // Next Button
+  function nextSlide() {
+    slideindex = (slideindex + 1) % totalSlides;
+    showSlide(slideindex);
+  }
+
+  document.querySelector(".prev").addEventListener("click", prevSlide);
+  document.querySelector(".next").addEventListener("click", nextSlide);
+</script>

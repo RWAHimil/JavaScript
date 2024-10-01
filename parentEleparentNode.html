@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" id="main">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 800px;
+        height: 500px;
+        background: tan;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .inner {
+        width: 650px;
+        height: 350px;
+        background: lightblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background: lightcoral;
+      }
+      #text {
+        background: lightskyblue;
+        width: 50%;
+        height: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      Outer
+      <div class="inner">
+        inner
+        <p>Inner</p>
+        <div class="box box-a">A</div>
+        <div class="box">B</div>
+        <div class="box box-c">
+          <p>hhhh</p>
+          C
+        </div>
+        <div class="box box-d">D</div>
+      </div>
+    </div>
+
+    <div id="text">
+      <h1>Heading</h1>
+      <h2>Heading 2</h2>
+    </div>
+  </body>
+</html>
+
+<script>
+  let parent = (document.querySelector(
+    ".inner"
+  ).parentElement.style.backgroundColor = "red");
+  console.log(parent);
+
+  let outparent = document.querySelector(".outer").parentElement;
+  console.log(outparent);
+
+  let body = document.body.parentElement;
+  console.log(body);
+
+  let html1 = document.querySelector("#main").parentNode;
+  console.log(html1);
+
+  let node = document.querySelector(".inner").parentNode;
+  console.log(node);
+
+  let children = document.querySelector(".outer").children;
+  console.log(children);
+
+  let children1 = (document.querySelector(
+    ".inner"
+  ).children[1].style.backgroundColor = "blue");
+  console.log(children1);
+
+  let children11 = (document.querySelector(".inner").children[1].innerHTML =
+    "Hello");
+  console.log(children11);
+
+  let children12 = (document.querySelector(".inner").children[2].innerHTML =
+    "World");
+  console.log(children12);
+
+  let children2 = document.querySelector("body").children;
+  console.log(children2);
+
+  let childrennode = document.querySelector(".inner").childNodes;
+  console.log(childrennode);
+
+  let firstChild = document.querySelector(".inner").firstChild;
+  console.log(firstChild);
+
+  let firstEle = document.querySelector(".inner").firstElementChild;
+  console.log(firstEle);
+
+  let firstEle1 = document.querySelector(".inner").firstElementChild.innerHTML;
+  console.log(firstEle1);
+
+  document.querySelector(".inner").firstElementChild.style.backgroundColor =
+    "royalblue";
+
+  let lastChild = document.querySelector(".inner").lastChild;
+  console.log(lastChild);
+
+  let lastEle = document.querySelector(".inner").lastElementChild;
+  console.log(lastEle);
+
+  let lastEle1 = document.querySelector(".inner").lastElementChild.innerHTML;
+  console.log(lastEle1);
+
+  document.querySelector(".inner").lastElementChild.style.backgroundColor =
+    "royalblue";
+
+  let hh = document.querySelector(".box-c").firstChild;
+  console.log(hh);
+
+  // let hh = document.querySelector(".box-c").lastChild;
+  // console.log(hh);
+
+  let nextelsibling = document.querySelector(".box-c").nextElementSibling;
+  console.log(nextelsibling);
+
+  let nextsibling = document.querySelector(".box-c").nextSibling;
+  console.log(nextsibling);
+
+  let prevelesibling = document.querySelector(".box-c").previousElementSibling;
+  console.log(prevelesibling);
+
+  let prevsibling = document.querySelector(".box-c").previousSibling;
+  console.log(prevelesibling);
+
+  let ff1 = document.querySelector(".inner").previousElementSibling;
+  console.log(ff1);
+
+  let ff = document.querySelector(".box-d").nextElementSibling;
+  console.log(ff);
+
+  let ele = document.createElement("p");
+  let ele1 = document.createTextNode("This is My First Text");
+  // let comment = document.createComment("This is Comment");
+  ele.appendChild(ele1);
+
+  // document.getElementById("text").appendChild(ele);
+  // document.querySelector("#text").appendChild(comment);
+  console.log(ele);
+
+  let target = document.querySelector("#text");
+  target.insertBefore(ele, target.childNodes[2]);
+</script>

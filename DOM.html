@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="head">Lorem ipsum laborum veritatis!</div>
+
+    <ul>
+      <li class="list-item">Home</li>
+      <li class="list-item">About</li>
+      <li class="list-item">Services</li>
+      <li class="list-item">Blog</li>
+      <li class="list-item">Contact</li>
+    </ul>
+    0
+    <div class="para">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et, voluptates.
+    </div>
+    <div class="para">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et, voluptate
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+      fugiat.s.
+    </div>
+
+    <input type="text" />
+    <input type="submit" value="Submit" />
+  </body>
+</html>
+
+<script>
+  let head = document.getElementById("head");
+
+  head.textContent = "Hello World!";
+
+  head.innerHTML = "<h1>Hello Universe</h1>";
+
+  // head.innerText = "Universe !!!";
+
+  head.style.borderBottom = "10px solid black";
+
+  let item = document.getElementsByClassName("list-item");
+
+  console.log(item[2]);
+
+  item[2].textContent = "How Are You ??";
+
+  // let input = document.querySelectorAll(".list-item");
+
+  // input[2].style.color = "red";
+
+  let input1 = document.querySelector("li:nth-child(3)");
+
+  input1.style.background = "salmon";
+
+  // let input2 = document.querySelectorAll("li:nth-child(odd)");
+
+  // for (let i = 0; i < input2.length; i++) {
+  //   input2[i].style.color = "green";
+  // }
+
+  // let even = document.querySelectorAll("li:nth-child(even)");
+
+  // for (let i = 0; i < even.length; i++) {
+  //   even[i].style.color = "red";
+  // }
+
+  let para = document.querySelectorAll(".para");
+
+  para[1].style.color = "blue";
+
+  let field = document.querySelector("input");
+
+  field.value = "Enter your name";
+
+  let button = document.querySelector("input[type = 'submit']");
+
+  button.value = "Send";
+  button.style.padding = "10px 20px";
+  button.style.backgroundColor = "tan";
+  button.style.borderRadius = "5px";
+  button.style.border = "none";
+  button.style.color = "brown";
+  button.style.cursor = "pointer";
+</script>

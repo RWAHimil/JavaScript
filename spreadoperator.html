@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  function sum2(name, ...args) {
+    console.log(arguments);
+
+    let add = 0;
+    for (let i in args) {
+      add += args[i];
+    }
+    console.log(add);
+    console.log(name);
+  }
+
+  let arr = [10, 20, 30];
+
+  sum2("raj", ...arr);
+
+  //
+  let arr1 = [10, 20, 3, 4, 50];
+
+  console.log("arr1 "+arr1);
+  console.log(...arr1);
+  console.log([...arr1]);
+
+  arr.push(arr1);
+  console.log("ARR "+arr);
+
+  let arr3 = [...arr1, ...arr];
+  console.log(arr3);
+
+  //
+
+  let obj = {
+    name: "Test"
+  };
+
+  let obj1 = {
+    age: 25
+  };
+
+  let obj2 = { ...obj, ...obj1 };
+
+  console.log(obj2);
+</script>

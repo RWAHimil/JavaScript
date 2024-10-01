@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  // Create form element
+  const form = document.createElement("form");
+  form.id = "myForm";
+
+  // Create name input field
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.id = "name";
+  nameInput.placeholder = "Enter your name";
+  form.appendChild(nameInput);
+
+  // p
+  const p = document.createElement("p");
+  p.id = "nameError";
+  form.appendChild(p);
+
+  // br
+  const br1 = document.createElement("br");
+  const br2 = document.createElement("br");
+  form.appendChild(br1);
+  form.appendChild(br2);
+
+  // Create email input field
+  const emailInput = document.createElement("input");
+  emailInput.type = "email";
+  emailInput.id = "email";
+  emailInput.placeholder = "Enter your email";
+  form.appendChild(emailInput);
+
+  // p
+  const p1 = document.createElement("p");
+  p1.id = "emailError";
+  form.appendChild(p1);
+
+  // br
+  const br = document.createElement("br");
+  form.appendChild(br);
+
+  const br3 = document.createElement("br");
+  form.appendChild(br3);
+
+  // Create submit button
+  const submitButton = document.createElement("button");
+  submitButton.type = "submit";
+  submitButton.textContent = "Submit";
+  form.appendChild(submitButton);
+
+  // Append form to the document body
+  document.body.appendChild(form);
+
+  // Add event listener for form submission
+  // Add event listener for form submission
+  document
+    .getElementById("myForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get form values
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+
+      // Validate name input
+      if (name === "") {
+        document.getElementById("nameError").textContent =
+          "Please Enter your name";
+      } else if (name.length < 3) {
+        document.getElementById("nameError").textContent =
+          "Character Should Be Minimum 3 Characters";
+      } else {
+        document.getElementById("nameError").textContent = "";
+      }
+
+      // Print data in console
+      console.log("Name: ", name);
+      console.log("Email: ", email);
+
+      event.target.reset();
+    });
+  console.log("Name " + name);
+  console.log("Password " + password);
+</script>

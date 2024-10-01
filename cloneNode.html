@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #test {
+        width: 750px;
+        height: 400px;
+        background: lightpink;
+        padding: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="list">
+      <li>Home</li>
+      <li>About</li>
+      <li><h3>Contact</h3></li>
+      <li>Service</li>
+      <li>Hello</li>
+    </ul>
+    <hr />
+    <ul id="list1">
+      <li>Home</li>
+      <li>Banana</li>
+      <li>Mango</li>
+      <li>Chiku</li>
+      <li>Grapes</li>
+    </ul>
+
+    <div id="test" class="test">
+      <h1>Heading</h1>
+      <p id="para" class="para1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, id
+        deleniti quaerat deserunt, quas nihil eum inventore maxime sint
+        laudantium at? Alias voluptate in autem?
+      </p>
+      <br />
+      <p id="para12">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quos.
+      </p>
+    </div>
+
+    <div id="demo"></div>
+
+    <ul id="list-2">
+      <li id="MANGO">Mango</li>
+      <li>Banana</li>
+      <li>Guava</li>
+    </ul>
+
+    <ul id="list-3">
+      <li>Mango</li>
+      <li>Grapes</li>
+      <li>Sitafal</li>
+      <li>Chiku</li>
+    </ul>
+
+    <div id="text">
+      <p>Hello</p>
+    </div>
+
+    <div id="text1">
+      <p class="p">Hello</p>
+      <h3>Head 3</h3>
+    </div>
+  </body>
+</html>
+
+<script>
+  // cloneNode(true or false) ----------------------------------------------------------------
+
+  let node = document.getElementById("list").children[2];
+  let node1 = document.getElementById("list").children[1];
+
+  let node2 = document.getElementById("list1");
+
+  let clone = node.cloneNode(true);
+  let clone1 = node1.cloneNode(false);
+
+  console.log(clone);
+  console.log(clone1);
+
+  // document.getElementById("list1").appendChild(clone);
+  // document.getElementById("list1").appendChild(clone1);
+  // node2.insertBefore(clone, node2.children[2]);
+  node2.insertBefore(clone, node2.children[4]);
+
+  //
+
+  let nn = document.getElementById("list-2").children[0];
+  console.log(nn);
+
+  let nn1 = document.getElementById("list-3");
+
+  let cl = nn.cloneNode(nn1);
+
+  console.log(cl);
+
+  // nn1.appendChild(cl);
+  nn1.insertBefore(cl, nn1.children[2]);
+
+  // contains() finds id ---------------------------------------------
+
+  let parent = document.getElementById("test");
+  // let target = document.getElementById("para2");
+  let find = parent.contains(document.getElementById("para"));
+  console.log(find);
+
+  //
+
+  let pp = document.getElementById("list-2");
+  let ff = pp.contains(document.getElementById("list-2"));
+  console.log("Hlll");
+
+  console.log(ff);
+
+  // hasAttribute ----------------------------------------------------
+
+  let test = document.getElementById("test");
+
+  let att = test.hasAttribute("class");
+
+  console.log(att);
+
+  // hasChildNodes ---------------------------------------------------
+
+  let demo = document.getElementById("demo");
+  let child = demo.hasChildNodes();
+  console.log(child);
+
+  // isEqualNode -----------------------------------------------------
+
+  let first = document.getElementById("list-2").firstElementChild;
+  let second = document.getElementById("list-3").firstElementChild;
+  // let second = document.getElementById("list-3").children[0];
+
+  let compare = first.isEqualNode(second);
+
+  console.log(compare);
+
+  //
+
+  let text = document.querySelector("#text").firstElementChild;
+  let text1 = document.querySelector("#text1").firstElementChild;
+
+  let c = text.isEqualNode(text1);
+  console.log(c);
+</script>

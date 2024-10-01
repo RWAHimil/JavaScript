@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" id="myForm">
+      <input type="text" placeholder="Enter Name" id="name" />
+      <br /><br />
+      <input type="password" placeholder="Enter password" id="password" />
+      <br /><br />
+      <input type="submit" />
+    </form>
+    <table border="1">
+      <thead>
+        <tr align="center">
+          <th>Sr No</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tableData"></tbody>
+    </table>
+  </body>
+</html>
+
+<script>
+  const submitForm = (event) => {
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let password = document.getElementById("password").value;
+
+    let arr = JSON.parse(localStorage.getItem("Data")) || [];
+
+    let obj = {
+      name: name,
+      password: password
+    };
+
+    arr.push(obj);
+
+    localStorage.setItem("Data", JSON.stringify(arr));
+    updateTable();
+    event.target.reset();
+  };
+
+  document.getElementById("myForm").addEventListener("submit", submitForm);
+
+  const updateTable = () => {
+    let userData = JSON.parse(localStorage.getItem("Data"));
+
+    let tableData = document.getElementById("tableData");
+
+    let tr = "";
+
+    userData.forEach((item, index) => {
+      tr += `
+    <tr>
+      <td align="center">${index + 1}</td>
+      <td>${item.name}</td>
+      <td>${item.password}</td>
+      <td><button onclick=EditData(${index})>Edit</button> <button onclick="DeleteData(${index})">Delete</button></td>
+    </tr>
+  `;
+    });
+    tableData.innerHTML = tr;
+  };
+
+  const DeleteData = (index) => {
+    let userData = JSON.parse(localStorage.getItem("Data"));
+    userData.splice(index, 1);
+    localStorage.setItem("Data", JSON.stringify(userData));
+    updateTable();
+  };
+
+  function EditData(index) {
+    let userData = JSON.parse(localStorage.getItem("Data") || "[]");
+    let editedName = prompt("Enter new name:", userData[index].name);
+    let editedPassword = prompt(
+      "Enter new password:",
+      userData[index].password
+    );
+
+    userData[index] = {
+      name: editedName,
+      password: editedPassword
+    };
+
+    localStorage.setItem("Data", JSON.stringify(userData));
+    updateTable();
+  }
+
+  updateTable();
+</script>

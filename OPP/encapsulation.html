@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encapsulation</title>
+  </head>
+  <body></body>
+</html>
+
+<!-- <script>
+  class Bank {
+    customerName;
+    accountNumber;
+    #balance;
+
+    constructor(customerName, balance = 0) {
+      this.customerName = customerName;
+      this.accountNumber = Date.now();
+      this.#balance = balance;
+    }
+
+    deposite(amount) {
+      this.#balance += amount;
+    }
+
+    withdraw(amount) {
+      this.#balance -= amount;
+    }
+  }
+
+  xyz = new Bank("XYZ", 500);
+  xyz.#balance = 600;
+  xyz.deposite(400);
+  xyz.withdraw(5);
+  console.log(xyz);
+
+  class Current extends Bank {
+    transactionLimit = 50000;
+
+    constructor(customerName, balance) {
+      super(customerName, balance);
+    }
+
+    load(amount) {
+      return console.log("Loan Paased " + amount);
+    }
+  }
+
+  const testCurrent = new Current("test", 100);
+  console.log(testCurrent);
+</script> -->
+
+<script>
+  class Bank {
+    customerName;
+    accountNumber;
+    #balance;
+
+    constructor(customerName, balance = 0) {
+      this.customerName = customerName;
+      this.accountNumber = Date.now();
+      this.#balance = balance;
+    }
+
+    deposite(amount) {
+      this.#balance += amount;
+    }
+
+    withdraw(amount) {
+      this.#balance -= amount;
+    }
+
+    getBalance() {
+      return this.#balance;
+    }
+
+    // Method to get balance for child classes
+    getPrivateBalance() {
+      return this.#balance;
+    }
+  }
+
+  xyz = new Bank("XYZ", 500);
+  xyz.deposite(400);
+  xyz.withdraw(5);
+  console.log("Balance in Bank object (xyz):", xyz.getBalance());
+
+  class Current extends Bank {
+    transactionLimit = 50000;
+
+    constructor(customerName, balance) {
+      super(customerName, balance);
+    }
+
+    load(amount) {
+      return console.log("Loan Passed " + amount);
+    }
+
+    getBalance() {
+      return this.getPrivateBalance(); // Accessing the private balance field from the parent class
+    }
+  }
+
+  const testCurrent = new Current("test", 100);
+  console.log(testCurrent);
+
+  console.log(
+    "Balance in Current object (testCurrent):",
+    testCurrent.getBalance()
+  );
+</script>

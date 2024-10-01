@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="demo">Here we load data</p>
+    <button onclick="loadData()">Click</button>
+    <button onclick="Demo()">Demo</button>
+
+    <button onclick="dog()">DOG</button>
+    <br /><br />
+    <img src="" alt="" id="image" />
+    <br /><br />
+    <p id="demo1">Hello I'm a Old File</p>
+    <br /><br />
+    <button onclick="TXT()">TXT</button>
+    <br /><br />
+    <button onclick="Weather()">Weather</button>
+    <h4>Country : <span id="country"></span></h4>
+    <h4>City : <span id="city"></span></h4>
+    <h4>Temperature *C : <span id="temp_c"></span></h4>
+    <h4>Temperature *f : <span id="temp_f"></span></h4>
+  </body>
+</html>
+
+<script>
+  function loadData() {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("demo").innerHTML = this.responseText;
+        console.log(this.responseText);
+      } else if (this.readyState == 4 && this.status == 404) {
+        console.log("No Data");
+      }
+    };
+
+    xhttp.open("GET", "readme.txt", true);
+
+    // xhttp.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+    xhttp.send();
+  }
+</script>
+
+<script>
+  function Demo() {
+    fetch("student_data.json")
+      // fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        for (let x in data) {
+          document.write(
+            // `${data[x].id} - ${data[x].name} - ${data[x].email}<br>`
+            `${data[x].name} - ${data[x].age}<br>`
+          );
+        }
+      })
+      .catch((error) => console.log("Can't Fetch Data"));
+  }
+</script>
+
+<script>
+  const dog = () => {
+    fetch("https://dog.ceo/api/breeds/image/random")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.message);
+        const URL = data.message;
+        const dogimage = document.getElementById("image");
+        dogimage.src = URL;
+      })
+      .catch((err) => console.log(err));
+  };
+</script>
+
+<script>
+  const TXT = () => {
+    fetch("readme.txt")
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+        const data1 = data;
+        const para = document.getElementById("demo1");
+        para.innerHTML = data1;
+        console.log(para);
+      })
+      .catch((err) => console.log(err));
+  };
+</script>
+
+<script>
+  const Weather = () => {
+    fetch(
+      "http://api.weatherapi.com/v1/current.json?key=c03aeda335f14a96bb6153016240406&q=india&aqi=no"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        console.log(data.location);
+        document.getElementById("country").innerHTML = data.location.country;
+        document.getElementById("city").innerHTML = data.location.name;
+        document.getElementById("temp_c").innerHTML = data.current.temp_c;
+        document.getElementById("temp_f").innerHTML = data.current.temp_f;
+      })
+
+      .catch((err) => console.log(err));
+  };
+</script>

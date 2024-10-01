@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objects</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        fname: "Himil",
+        lname: "Chauhan",
+        age: 25,
+        country: "India",
+        movie: ["KGF", "KGF2"],
+        living: {
+          city: "Ahmedabad",
+          area: "Navrangpura"
+        },
+        salary: function () {
+          return 25000;
+        },
+        fullName: function () {
+          return this.fname + " " + this.lname;
+        }
+      };
+
+      document.write(obj.fname + "<br>");
+      document.write(obj["lname"] + "<br>");
+
+      document.write(obj.movie[0] + "<br>");
+      document.write(obj.salary() + "<br>");
+      document.write(obj.fullName() + "<br>");
+      document.write(obj.living.city + "<br>");
+      document.write(obj.living.area + "<br>");
+
+      console.log(obj);
+
+      let newObj = new Object();
+
+      newObj.name = "Hello";
+      newObj.number = "123";
+
+      document.write(newObj.name);
+    </script>
+  </body>
+</html>

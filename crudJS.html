@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="user_form">
+      <input type="text" placeholder="Name" name="name" id="name" />
+      <br /><br />
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        id="password"
+      />
+      <br /><br />
+      <button type="submit" id="btn">Submit</button>
+    </form>
+
+    <br /><br />
+    <table>
+      <thead>
+        <tr>
+          <th>Sr No</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tableData"></tbody>
+    </table>
+
+    <script>
+      let form = document.getElementById("user_form");
+      let currentIndex = null;
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        let name = event.target.name.value;
+        let password = event.target.password.value;
+
+        let arr = JSON.parse(localStorage.getItem("dataForm")) || [];
+
+        if (currentIndex !== null) {
+          arr[currentIndex] = { name, password };
+          currentIndex = null;
+          document.getElementById("btn").innerHTML = "Submit";
+        } else {
+          //   let obj = {
+          //     name: name,
+          //     password: password
+          //   };
+          arr.push({ name, password });
+        }
+        localStorage.setItem("dataForm", JSON.stringify(arr));
+
+        event.target.reset();
+        updateData1();
+      });
+
+      const updateData1 = () => {
+        let arr = JSON.parse(localStorage.getItem("dataForm")) || [];
+        let tableData = document.getElementById("tableData");
+        let tr = "";
+
+        arr.map((e, i) => {
+          tr += `
+                  <tr>
+                      <td>${i + 1}</td>
+                      <td>${e.name}</td>
+                      <td>${e.password}</td>
+                      <td><button onclick={editData(${i})}>Edit</button><button onclick={deleteData(${i})}>Delete</button></td>
+                  </tr>
+              `;
+        });
+
+        tableData.innerHTML = tr;
+      };
+
+      const deleteData = (i) => {
+        const updatedData = JSON.parse(localStorage.getItem("dataForm"));
+        const newData = updatedData.filter((ele, index) => i !== index);
+        // updatedData.splice(i, 1);
+        localStorage.setItem("dataForm", JSON.stringify(newData));
+        updateData1();
+      };
+
+      const editData = (i) => {
+        const updatedData = JSON.parse(localStorage.getItem("dataForm"));
+        document.getElementById("name").value = updatedData[i].name;
+        document.getElementById("password").value = updatedData[i].password;
+        currentIndex = i;
+        document.getElementById("btn").innerHTML = "Update";
+      };
+
+      updateData1();
+    </script>
+  </body>
+</html>

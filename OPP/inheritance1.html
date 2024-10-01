@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  function BankAccount(customerName, balance = 0) {
+    this.customerName = customerName;
+    this.accountNumber = Date.now();
+    this.balance = balance;
+  }
+
+  BankAccount.prototype.deposite = function (amount) {
+    this.balance += amount;
+  };
+  BankAccount.prototype.withdraw = function (amount) {
+    this.balance -= amount;
+  };
+
+  rajAccount = new BankAccount("Raj", 55);
+  console.log(rajAccount);
+
+  // Current Account---------------------------------
+  function currentAccount(customerName, balance = 0) {
+    BankAccount.call(this, customerName, balance);
+    this.transactionLimit = 10000;
+  }
+
+  currentAccount.prototype = Object.create(BankAccount.prototype);
+
+  currentAccount.prototype.takeBusinessLoan = function (amount) {
+    console.log("Taking Business Loan" + amount);
+  };
+
+  himilAccount = new currentAccount("xyz", 250);
+  himilAccount.takeBusinessLoan(50000);
+  himilAccount.withdraw(250);
+  console.log(himilAccount);
+
+  // Saving Account----------------------------------
+  function savingAccount(customerName, balance = 0) {
+    BankAccount.call(this, customerName, balance);
+    this.transactionLimit = 10000;
+  }
+
+  savingAccount.prototype.takeBusinessLoan = function (amount) {
+    console.log("Taking Personal Loan" + amount);
+  };
+
+  himilAccount = new savingAccount("himil", 25);
+  console.log(himilAccount);
+</script>

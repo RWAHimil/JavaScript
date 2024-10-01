@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="submit1(event)">
+      <input
+        type="text"
+        placeholder="Enter Name"
+        onchange="change1(this)"
+        id="name"
+      />
+      <br /><br />
+      <label for="">Country : </label>
+      <select name="" id="" onchange="change(this)">
+        <option value="India">India</option>
+        <option value="Canada">Canada</option>
+        <option value="Nepal">Nepal</option>
+        <option value="UK">UK</option>
+      </select>
+      <br /><br />
+      <input
+        type="text"
+        placeholder="Enter Text"
+        onselect="select1()"
+        id="text"
+      />
+      <br /><br />
+      <input type="submit" />
+    </form>
+    <div id="id1"></div>
+    <div id="id"></div>
+    <div id="display"></div>
+  </body>
+</html>
+
+<script>
+  const change = (ele) => {
+    let id = document.getElementById("id");
+    id.textContent = ele.value;
+  };
+
+  const change1 = (ele) => {
+    let id2 = document.getElementById("id1");
+    id2.textContent = ele.value;
+  };
+
+  const select1 = () => {
+    console.log("You Selected Text");
+  };
+
+  const submit1 = (event) => {
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let text = document.getElementById("text").value;
+    let countrySelect = document.querySelector("select");
+    let country = countrySelect.options[countrySelect.selectedIndex].text;
+
+    let displayElement = document.getElementById("display");
+
+    displayElement.textContent =
+      "Name: " + name + ", Text: " + text + ", Country: " + country;
+  };
+
+  // Syntax: setTimeout(function, delay)
+
+  // Example 1: Display a message after 3 seconds
+  setTimeout(function () {
+    console.log("Hello, this message appeared after 3 seconds!");
+  }, 3000);
+
+  // Example 2: Using an arrow function
+  setTimeout(() => {
+    console.log("This is an arrow function inside setTimeout!");
+  }, 2000);
+
+  // Syntax: setInterval(function, interval)
+
+  // Example 1: Display a message every 2 seconds
+  let counter = 0;
+  const interval = setInterval(function () {
+    console.log("Counter: " + counter);
+    counter++;
+  }, 2000);
+
+  // Example 2: Using an arrow function
+  let seconds = 0;
+  const interval2 = setInterval(() => {
+    console.log("Seconds passed: " + seconds);
+    seconds++;
+  }, 1000);
+
+  // Example 3: Stop the interval after 5 seconds
+  setTimeout(() => {
+    clearInterval(interval);
+    clearInterval(interval2);
+    console.log("Interval stopped after 5 seconds");
+  }, 5000);
+</script>

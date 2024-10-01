@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" onsubmit="submitForm()">
+      <input type="text" placeholder="Enter Name" id="name" />
+      <br /><br />
+      <input type="number" placeholder="Enter Age" id="age" />
+      <br /><br />
+      <input type="number" placeholder="Enter Salary" id="salary" />
+      <br /><br />
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
+<script>
+  // Inheritance
+
+  class employee {
+    constructor(name, age, salary) {
+      this.empName = name;
+      this.empAge = age;
+      this.empSalary = salary;
+      //   console.log("Constructor : Employee " + name);
+    }
+
+    info() {
+      //   console.log("Employee Name " + this.empName);
+      document.write(`<h3>Employee Class</h3>
+                      Name : ${this.empName} <br>
+                      Age : ${this.empAge} <br>
+                      Salary : ${this.empSalary} <br>`);
+    }
+  }
+
+  class manager extends employee {
+    constructor(name, age, salary) {
+      super(name, age, salary);
+    //   this.ta = 1000;
+    //   this.pa = 300;
+    }
+    info() {
+      let ta = 1000;
+      let pa = 300;
+      let totalSalary = this.empSalary + ta + pa;
+      //   console.log("Employee Name " + this.empName);
+      document.write(`<h3>Manager Class</h3>
+                      Name : ${this.empName} <br>
+                      Age : ${this.empAge} <br>
+                      Salary : ${totalSalary} <br>`);
+    }
+    // constructor() {
+    //   super();
+    //   console.log("Constructor : Manager ");
+    // }
+    // info() {
+    //   super.info();
+    //   console.log("Manager Name " + this.empName);
+    // }
+  }
+
+  //   let b = new employee("Himil", 20, 15000);
+  let b = new employee(name, age, salary);
+  //   b.info();
+  const submitForm = () => {
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+    let salary = document.getElementById("salary").value;
+
+    let b = new employee(name, age, salary);
+    b.info();
+  };
+  let a = new manager("Yuvraj", 25, 20000);
+  a.info();
+  //   console.log(a);
+</script>
